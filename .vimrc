@@ -1,3 +1,5 @@
+" Agregando pathogen.
+execute pathogen#infect()
 " Permite mover con el mouse las lineas de division (ejm:split)
 set nocompatible
 if has("mouse")
@@ -31,4 +33,3 @@ set smartcase               " unless uppercase letters are used in the regex.
 set smarttab                " Handle tabs more intelligently 
 set hlsearch                " Highlight searches by default.
 set incsearch               " Incrementally search while typing a /regex
-
