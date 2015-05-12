@@ -41,3 +41,8 @@ colorscheme distinguished
 
 " Open NerdTree
 map <F2> :NERDTreeToggle<CR>
+
+" tabnew archivo abre un nuevo archivo en una pestaña
+" Permite moverse con la tecla tab
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
