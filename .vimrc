@@ -38,3 +38,6 @@ set incsearch               " Incrementally search while typing a /regex
 set t_Co=256
 colorscheme distinguished
 
+
+" Open NerdTree
+map <F2> :NERDTreeToggle<CR>
