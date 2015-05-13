@@ -50,3 +50,7 @@ nnoremap <S-Tab> :bprevious<CR>
 "muestra las pestañas del buffer (Smarter tab line)
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
+
+"tag bar
+"depedencia apt-get install exuberant-ctags
+nmap <F8> :TagbarToggle<CR>
