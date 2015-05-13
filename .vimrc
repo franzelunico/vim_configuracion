@@ -45,3 +45,8 @@ map <F2> :NERDTreeToggle<CR>
 " Permite moverse con la tecla tab
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
+
+"vim-airline
+"muestra las pestañas del buffer (Smarter tab line)
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
