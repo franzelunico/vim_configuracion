@@ -73,3 +73,8 @@ let g:Powerline_symbols = 'fancy' "Muestra los simbolos
 "let g:Powerline_theme = 'molokai'
 let g:Powerline_colorscheme = 'default'
 "let g:Powerline_stl_path_style = 'full'
+
+" Agregando ultisnips
+" mkdir -p ~/.vim/ftdetect/
+" ln -s ~/.vim/ultisnips_rep/ftdetect/* ~/.vim/ftdetect/
+set runtimepath+=/home/killer/Documentos/proyectos/vim_configuracion/.vim/bundle/ultisnips
