@@ -83,3 +83,6 @@ let g:Powerline_colorscheme = 'default'
 " mkdir -p ~/.vim/ftdetect/
 " ln -s ~/.vim/ultisnips_rep/ftdetect/* ~/.vim/ftdetect/
 set runtimepath+=/home/killer/Documentos/proyectos/vim_configuracion/.vim/bundle/ultisnips
+
+"Habilita nocompatible
+let g:neocomplete#enable_at_startup = 1
