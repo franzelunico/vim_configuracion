@@ -1,7 +1,7 @@
 " Agregando pathogen.
 execute pathogen#infect()
 " Permite mover con el mouse las lineas de division (ejm:split)
-set nocompatible
+set nocompatible "Disable vi-compatibility    vim-powerline
 if has("mouse")
     set mouse=a
 endif
@@ -49,8 +49,27 @@ nnoremap <S-Tab> :bprevious<CR>
 "vim-airline
 "muestra las pestañas del buffer (Smarter tab line)
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_sep = ' '
 
 "tag bar
 "depedencia apt-get install exuberant-ctags
 nmap <F8> :TagbarToggle<CR>
+
+"Requisitos para powerline (Helptags, help powerline)
+"vim-powerline/fontpatcher
+"$ ./fontpatcher PowerlineSymbols.sfd
+"$ cp PowerlineSymbols-Powerline.otf ~/.fonts/
+"# fc-cache -vf
+
+"let g:airline_powerline_fonts = 1
+"let g:airline_symbols
+set nocompatible   
+set laststatus=2   " Always show the statusline
+set encoding=utf-8 " Necessary to show Unicode glyphs
+
+let g:Powerline_symbols = 'fancy' "Muestra los simbolos
+
+"vim-powerline/autoload/Powerline/Colorschemes
+"let g:Powerline_theme = 'molokai'
+let g:Powerline_colorscheme = 'default'
+"let g:Powerline_stl_path_style = 'full'
