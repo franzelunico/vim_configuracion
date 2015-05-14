@@ -43,9 +43,14 @@ colorscheme distinguished
 map <F2> :NERDTreeToggle<CR>
 " badd agrega una nueva pestaña al buffer
 " Permite moverse con la tecla tab
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
-
+"nnoremap <Tab> :bnext<CR>
+"nnoremap <S-Tab> :bprevious<CR>
+"Control + fecha derecha
+nnoremap <C-Right> :bnext<CR>
+"Control + fecha derecha
+nnoremap <C-Left> :bprevious<CR>
+"Control + c cerrar pestaña
+nnoremap <C-c> :bdelete<CR>
 "vim-airline
 "muestra las pestañas del buffer (Smarter tab line)
 let g:airline#extensions#tabline#enabled = 1
