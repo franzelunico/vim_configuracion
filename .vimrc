@@ -13,7 +13,7 @@ filetype plugin indent on     " enable loading indent file for filetype
 syntax on
 set number
 set autoindent
-"set nowrap                  " don't wrap text Define una linea estatica (no responsivo)
+set nowrap                  " don't wrap text Define una linea estatica (no responsivo)
 " Permite vel el final de las lineal eol
 set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:>
 set list
