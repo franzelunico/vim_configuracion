@@ -127,3 +127,9 @@ else
 endif
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
+
+let NERDTreeIgnore=['\.pyc$', '\.pdf$', '\.log$', '\.lot$', '\.lof$', '\.out$','\.aux$','\.toc$']
+" switch higlight no matter the previous state
+nmap <F4> :set hls! <cr>
+" hit '/' highlights then enter search mode
+nnoremap / :set hlsearch<cr>/
