@@ -1,5 +1,29 @@
-" Agregando pathogen.
-execute pathogen#infect()
+" Agregando Vundle
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=/home/killer/Documentos/proyectos/vim_configuracion/.vim/bundle/Vundle.vim
+" Agregando plugins a Vundle
+call vundle#begin()
+
+Plugin 'qstrahl/vim-matchmaker' "realiza match sobre el curso(palabra)
+
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+Plugin 'scrooloose/nerdtree'  " Para navegar sobre direcctorios
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+Plugin 'airblade/vim-gitgutter' "muestra cambios sobre un archivo +,~,etc
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'morhetz/gruvbox' " colorschema
+
+Plugin 'scrooloose/syntastic' " Muestra errores de sintaxis
+call vundle#end()
+
+
 " Permite mover con el mouse las lineas de division (ejm:split)
 set nocompatible "Disable vi-compatibility    vim-powerline
 if has("mouse")
@@ -17,15 +41,11 @@ set nowrap                  " don't wrap text Define una linea estatica (no resp
 " Permite vel el final de las lineal eol
 set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:>
 set list
-set cursorline cursorcolumn " Permite ver linea del cursolo horizontal vertical
 
 set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-
-autocmd FileType html setlocal shiftwidth=2 tabstop=2
-autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
 
 " Busquedas
 set ignorecase              " Default to using case insensitive searches,
@@ -36,11 +56,10 @@ set incsearch               " Incrementally search while typing a /regex
 
 "Agregando colorschema Distinguished
 set t_Co=256
-colorscheme distinguished
+set background=dark
+let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
 
-
-" Open NerdTree
-map <F2> :NERDTreeToggle<CR>
 " badd agrega una nueva pestaña al buffer
 " Permite moverse con la tecla tab
 "nnoremap <Tab> :bnext<CR>
@@ -58,31 +77,33 @@ let g:airline#extensions#tabline#enabled = 1
 
 "tag bar
 "depedencia apt-get install exuberant-ctags
-nmap <F8> :TagbarToggle<CR>
 
 "Requisitos para powerline (Helptags, help powerline)
+"http://powerline.readthedocs.org/en/master/installation/linux.html
 "vim-powerline/fontpatcher
 "$ ./fontpatcher PowerlineSymbols.sfd
 "$ cp PowerlineSymbols-Powerline.otf ~/.fonts/
 "# fc-cache -vf
+let g:airline_powerline_fonts = 1
 
 "let g:airline_powerline_fonts = 1
 "let g:airline_symbols
-set nocompatible   
+set nocompatible
 set laststatus=2   " Always show the statusline
-set encoding=utf-8 " Necessary to show Unicode glyphs
+"Acceso rapido
+map <F2> :NERDTreeToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 
-let g:Powerline_symbols = 'fancy' "Muestra los simbolos
+" Configuracion de plugins
+"============qstrahl/vim-matchmaker============
+let g:matchmaker_enable_startup = 1 
+"============scrooloose/syntastic============
+set statusline+=%#warningmsg# "
+set statusline+=%{SyntasticStatuslineFlag()}"
+set statusline+=%*"
+let g:syntastic_python_checkers=['pylama'] " pip install pylama
+let g:syntastic_always_populate_loc_list = 1"
+let g:syntastic_auto_loc_list = 1"
+let g:syntastic_check_on_open = 1"
+let g:syntastic_check_on_wq = 0"
 
-"vim-powerline/autoload/Powerline/Colorschemes
-"let g:Powerline_theme = 'molokai'
-let g:Powerline_colorscheme = 'default'
-"let g:Powerline_stl_path_style = 'full'
-
-" Agregando ultisnips
-" mkdir -p ~/.vim/ftdetect/
-" ln -s ~/.vim/ultisnips_rep/ftdetect/* ~/.vim/ftdetect/
-set runtimepath+=/home/killer/Documentos/proyectos/vim_configuracion/.vim/bundle/ultisnips
-
-"Habilita nocompatible
-let g:neocomplete#enable_at_startup = 1
