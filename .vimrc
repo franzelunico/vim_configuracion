@@ -21,6 +21,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'morhetz/gruvbox' " colorschema
 
 Plugin 'scrooloose/syntastic' " Muestra errores de sintaxis
+
+Plugin 'altercation/vim-colors-solarized' " colorscheme gvim
+
 call vundle#end()
 
 
@@ -38,9 +41,6 @@ syntax on
 set number
 set autoindent
 set nowrap                  " don't wrap text Define una linea estatica (no responsivo)
-" Permite vel el final de las lineal eol
-set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:>
-set list
 
 set expandtab
 set shiftwidth=4
@@ -55,10 +55,10 @@ set hlsearch                " Highlight searches by default.
 set incsearch               " Incrementally search while typing a /regex
 
 "Agregando colorschema Distinguished
-set t_Co=256
+
+set t_Co=256                            " morhetz/gruvbox'
 set background=dark
-let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
+colorscheme distinguished                     " morhetz/gruvbox'
 
 " badd agrega una nueva pestaña al buffer
 " Permite moverse con la tecla tab
@@ -106,4 +106,12 @@ let g:syntastic_always_populate_loc_list = 1"
 let g:syntastic_auto_loc_list = 1"
 let g:syntastic_check_on_open = 1"
 let g:syntastic_check_on_wq = 0"
+
+map <F3> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
+if has('gui_running')
+    syntax enable
+    set background=dark
+    colorscheme solarized
+endif
 
