@@ -9,17 +9,21 @@ call vundle#begin()
 
 Plugin 'qstrahl/vim-matchmaker' "realiza match sobre el curso(palabra)
 
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+
+Plugin 'tpope/vim-fugitive' " Nos permite acciones git en vim, Gpush,etc
+Plugin 'airblade/vim-gitgutter' " Muestra cambios sobre un archivo +,~,etc
 
 Plugin 'scrooloose/nerdtree'  " Para navegar sobre direcctorios
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'tomtom/tcomment_vim' " colorscheme gvim
 
-Plugin 'airblade/vim-gitgutter' "muestra cambios sobre un archivo +,~,etc
-Plugin 'tpope/vim-fugitive'
+Plugin 'MarcWeber/vim-addon-mw-utils' " uso de sniptes para diferentes lenguajes
+Plugin 'tomtom/tlib_vim'           " uso de sniptes para diferentes lenguajes
+Plugin 'garbas/vim-snipmate'       " uso de sniptes para diferentes lenguajes
+Plugin 'honza/vim-snippets'        " opcional
 
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'morhetz/gruvbox' " colorschema
-
 Plugin 'scrooloose/syntastic' " Muestra errores de sintaxis
 
 Plugin 'altercation/vim-colors-solarized' " colorscheme gvim
