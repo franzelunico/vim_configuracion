@@ -8,6 +8,7 @@ set rtp+=/home/killer/Documentos/proyectos/vim_configuracion/.vim/bundle/Vundle.
 call vundle#begin()
 
 Plugin 'qstrahl/vim-matchmaker' "realiza match sobre el curso(palabra)
+Plugin 'ctrlpvim/ctrlp.vim' " realizar busquda de archivo (diferente a find)
 
 
 Plugin 'tpope/vim-fugitive' " Nos permite acciones git en vim, Gpush,etc
