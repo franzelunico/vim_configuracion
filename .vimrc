@@ -14,7 +14,7 @@ Plugin 'tpope/vim-fugitive' " Nos permite acciones git en vim, Gpush,etc
 Plugin 'airblade/vim-gitgutter' " Muestra cambios sobre un archivo +,~,etc
 
 Plugin 'scrooloose/nerdtree'  " Para navegar sobre direcctorios
-Plugin 'tomtom/tcomment_vim' " colorscheme gvim
+Plugin 'tomtom/tcomment_vim' " para comentar codigo
 
 Plugin 'MarcWeber/vim-addon-mw-utils' " uso de sniptes para diferentes lenguajes
 Plugin 'tomtom/tlib_vim'           " uso de sniptes para diferentes lenguajes
@@ -26,7 +26,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'morhetz/gruvbox' " colorschema
 Plugin 'scrooloose/syntastic' " Muestra errores de sintaxis
 
-Plugin 'altercation/vim-colors-solarized' " colorscheme gvim
+Plugin 'altercation/vim-colors-solarized' " colorscheme gvim (funciona en xface terminal)
 
 call vundle#end()
 
@@ -61,8 +61,12 @@ set incsearch               " Incrementally search while typing a /regex
 "Agregando colorschema Distinguished
 
 set t_Co=256                            " morhetz/gruvbox'
-set background=dark
-colorscheme distinguished                     " morhetz/gruvbox'
+"syntax enable
+set background=light                     "light, dark
+colorscheme gruvbox                     "solarized, gruvbox, distinguished
+
+":AirlineTheme bubblegum   (laederon, papercolor, distinguished)
+let g:airline_theme="papercolor"
 
 " badd agrega una nueva pestaña al buffer
 " Permite moverse con la tecla tab
@@ -113,17 +117,20 @@ let g:syntastic_check_on_wq = 0"
 
 map <F3> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
-if has('gui_running')
-    syntax enable
-    set background=dark
-    colorscheme solarized
-endif
+"if has('gui_running')
+    " syntax enable
+    " set background=dark
+    " colorscheme solarized
+"endif
 
 " Limitar columnas a 80
 if exists('+colorcolumn')
-    set colorcolumn=80
+     set colorcolumn=80
 else
-    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+" " highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+" " match OverLength /\%81v.\+/
+" revisar a partir del 27
+" ctermbg 4,7,10,16
+hi default Matchmaker term=underline    ctermbg=11     guibg=#000000
