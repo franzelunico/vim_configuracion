@@ -8,6 +8,7 @@ set rtp+=/home/killer/Documentos/proyectos/vim_configuracion/.vim/bundle/Vundle.
 call vundle#begin()
 
 Plugin 'qstrahl/vim-matchmaker' "realiza match sobre el curso(palabra)
+Plugin 'ctrlpvim/ctrlp.vim' " realizar busquda de archivo (diferente a find)
 
 
 Plugin 'tpope/vim-fugitive' " Nos permite acciones git en vim, Gpush,etc
@@ -134,3 +135,13 @@ endif
 " revisar a partir del 27
 " ctermbg 4,7,10,16
 hi default Matchmaker term=underline    ctermbg=11     guibg=#000000
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
+let NERDTreeIgnore=['\.pyc$', '\.pdf$', '\.log$', '\.lot$', '\.lof$', '\.out$','\.aux$','\.toc$']
+" switch higlight no matter the previous state
+nmap <F4> :set hls! <cr>
+" hit '/' highlights then enter search mode
+nnoremap / :set hlsearch<cr>/
+
+setlocal foldmethod=indent
