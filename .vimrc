@@ -135,8 +135,8 @@ endif
 " revisar a partir del 27
 " ctermbg 4,7,10,16
 hi default Matchmaker term=underline    ctermbg=11     guibg=#000000
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+"highlight OverLength ctermbg=red ctermfg=white guibg=#592929 "marca con rojo
+"match OverLength /\%81v.\+/                                  "lo se pasa
 
 let NERDTreeIgnore=['\.pyc$', '\.pdf$', '\.log$', '\.lot$', '\.lof$', '\.out$','\.aux$','\.toc$']
 " switch higlight no matter the previous state
