@@ -143,5 +143,4 @@ let NERDTreeIgnore=['\.pyc$', '\.pdf$', '\.log$', '\.lot$', '\.lof$', '\.out$','
 nmap <F4> :set hls! <cr>
 " hit '/' highlights then enter search mode
 nnoremap / :set hlsearch<cr>/
-
 setlocal foldmethod=indent
