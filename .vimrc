@@ -3,7 +3,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=/home/killer/Documentos/proyectos/vim_configuracion/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 " Agregando plugins a Vundle
 call vundle#begin()
 
@@ -64,6 +64,7 @@ set incsearch               " Incrementally search while typing a /regex
 set t_Co=256                            " morhetz/gruvbox'
 "syntax enable
 set background=light                     "light, dark
+highlight Comment gui=bold
 colorscheme gruvbox                     "solarized, gruvbox, distinguished
 
 ":AirlineTheme bubblegum   (laederon, papercolor, distinguished)
@@ -111,6 +112,7 @@ set statusline+=%#warningmsg# "
 set statusline+=%{SyntasticStatuslineFlag()}"
 set statusline+=%*"
 let g:syntastic_python_checkers=['pylama'] " pip install pylama
+let g:syntastic_javascrip_checkers=['jshint'] " npm install -g jshint
 let g:syntastic_always_populate_loc_list = 1"
 let g:syntastic_auto_loc_list = 1"
 let g:syntastic_check_on_open = 1"
@@ -133,8 +135,8 @@ endif
 " " highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 " " match OverLength /\%81v.\+/
 " revisar a partir del 27
-" ctermbg 4,7,10,16
-hi default Matchmaker term=underline    ctermbg=11     guibg=#000000
+" ctermbg 4,7,10,11,16
+hi default Matchmaker term=underline    ctermbg=43     guibg=#000000
 "highlight OverLength ctermbg=red ctermfg=white guibg=#592929 "marca con rojo
 "match OverLength /\%81v.\+/                                  "lo se pasa
 
@@ -143,4 +145,5 @@ let NERDTreeIgnore=['\.pyc$', '\.pdf$', '\.log$', '\.lot$', '\.lof$', '\.out$','
 nmap <F4> :set hls! <cr>
 " hit '/' highlights then enter search mode
 nnoremap / :set hlsearch<cr>/
-setlocal foldmethod=indent
+" setlocal foldmethod=indent
+highlight Normal ctermbg=White
