@@ -147,3 +147,4 @@ nmap <F4> :set hls! <cr>
 nnoremap / :set hlsearch<cr>/
 " setlocal foldmethod=indent
 highlight Normal ctermbg=White
+hi Search cterm=NONE ctermfg=grey ctermbg=45
