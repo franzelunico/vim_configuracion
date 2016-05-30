@@ -108,15 +108,26 @@ nmap <F8> :TagbarToggle<CR>
 "============qstrahl/vim-matchmaker============
 let g:matchmaker_enable_startup = 1 
 "============scrooloose/syntastic============
-set statusline+=%#warningmsg# "
-set statusline+=%{SyntasticStatuslineFlag()}"
-set statusline+=%*"
+let g:syntastic_mode_map = { 'mode': 'active',
+                            \ 'active_filetypes': ['python', 'javascript'],
+                            \ 'passive_filetypes': [] }
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 let g:syntastic_python_checkers=['pylama'] " pip install pylama
-let g:syntastic_javascrip_checkers=['jshint'] " npm install -g jshint
-let g:syntastic_always_populate_loc_list = 1"
-let g:syntastic_auto_loc_list = 1"
-let g:syntastic_check_on_open = 1"
-let g:syntastic_check_on_wq = 0"
+"let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['jslint']
+"let g:syntastic_javascrip_checkers=['jshint'] " npm install -g jshint
+"let g:syntastic_javascript_closurecompiler_path = '/home/killer/Descargas/compiler-latest/compiler.jar'
+
+autocmd bufwritepost *.js silent !standard-format -w %
+set autoread
 
 map <F3> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
@@ -136,7 +147,7 @@ endif
 " " match OverLength /\%81v.\+/
 " revisar a partir del 27
 " ctermbg 4,7,10,11,16
-hi default Matchmaker term=underline    ctermbg=43     guibg=#000000
+hi default Matchmaker term=underline    ctermbg=43     guibg=#ffffff 
 "highlight OverLength ctermbg=red ctermfg=white guibg=#592929 "marca con rojo
 "match OverLength /\%81v.\+/                                  "lo se pasa
 
@@ -147,6 +158,7 @@ nmap <F4> :set hls! <cr>
 nnoremap / :set hlsearch<cr>/
 " setlocal foldmethod=indent
 highlight Normal ctermbg=White
-hi Search cterm=NONE ctermfg=grey ctermbg=45
 " limpiar los buffers menos el actual
 " :w | %bd | e#"
+" hi Search cterm=NONE ctermfg=black ctermbg=45
+hi Search cterm=NONE ctermfg=grey ctermbg=45
