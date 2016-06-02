@@ -108,9 +108,8 @@ nmap <F8> :TagbarToggle<CR>
 "============qstrahl/vim-matchmaker============
 let g:matchmaker_enable_startup = 1 
 "============scrooloose/syntastic============
-let g:syntastic_mode_map = { 'mode': 'active',
-                            \ 'active_filetypes': ['python', 'javascript'],
-                            \ 'passive_filetypes': [] }
+let g:syntastic_python_checkers=['pylama'] " pip install pylama
+let g:syntastic_javascript_checkers = ['jslint']
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -120,13 +119,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_python_checkers=['pylama'] " pip install pylama
-"let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_checkers = ['jslint']
-"let g:syntastic_javascrip_checkers=['jshint'] " npm install -g jshint
-"let g:syntastic_javascript_closurecompiler_path = '/home/killer/Descargas/compiler-latest/compiler.jar'
 
-autocmd bufwritepost *.js silent !standard-format -w %
 set autoread
 
 map <F3> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
