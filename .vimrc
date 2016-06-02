@@ -109,7 +109,7 @@ nmap <F8> :TagbarToggle<CR>
 let g:matchmaker_enable_startup = 1 
 "============scrooloose/syntastic============
 let g:syntastic_python_checkers=['pylama'] " pip install pylama
-let g:syntastic_javascript_checkers = ['jslint']
+let g:syntastic_javascript_checkers = ['jslint'] "npm install -g jslint
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
