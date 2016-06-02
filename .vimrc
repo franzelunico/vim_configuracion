@@ -162,3 +162,6 @@ highlight Normal ctermbg=White
 " :w | %bd | e#"
 " hi Search cterm=NONE ctermfg=black ctermbg=45
 hi Search cterm=NONE ctermfg=grey ctermbg=45
+" instalar tidy apt-get install tidy
+" tidy ignorar atributos ng-
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
