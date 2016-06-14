@@ -28,6 +28,11 @@ Plugin 'morhetz/gruvbox' " colorschema
 Plugin 'scrooloose/syntastic' " Muestra errores de sintaxis
 
 Plugin 'altercation/vim-colors-solarized' " colorscheme gvim (funciona en xface terminal)
+":e $VIMRUNTIME/macros/matchit.vim
+":saveas ~/.vim/plugin/matchit.vim
+":e $VIMRUNTIME/macros/matchit.txt
+":saveas ~/.vim/doc/matchit.txt
+Plugin 'Valloric/MatchTagAlways' "colorea los los tags 
 
 call vundle#end()
 
@@ -106,6 +111,7 @@ nmap <F8> :TagbarToggle<CR>
 
 " Configuracion de plugins
 "============qstrahl/vim-matchmaker============
+":Matchmaker! "Disable
 let g:matchmaker_enable_startup = 1 
 "============scrooloose/syntastic============
 let g:syntastic_python_checkers=['pylama'] " pip install pylama
@@ -149,6 +155,10 @@ let NERDTreeIgnore=['\.pyc$', '\.pdf$', '\.log$', '\.lot$', '\.lof$', '\.out$','
 nmap <F4> :set hls! <cr>
 " hit '/' highlights then enter search mode
 nnoremap / :set hlsearch<cr>/
+" :mkview " para guardar los cambios del folding
+" :loadview "al abrir el archivo como estaba en el folding
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview 
 " setlocal foldmethod=indent
 highlight Normal ctermbg=White
 " limpiar los buffers menos el actual
