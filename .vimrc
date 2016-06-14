@@ -157,9 +157,10 @@ nmap <F4> :set hls! <cr>
 nnoremap / :set hlsearch<cr>/
 " :mkview " para guardar los cambios del folding
 " :loadview "al abrir el archivo como estaba en el folding
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview 
+" autocmd BufWinLeave *.* mkview
+" autocmd BufWinEnter *.* silent loadview 
 " setlocal foldmethod=indent
+" set nofoldenable "
 highlight Normal ctermbg=White
 " limpiar los buffers menos el actual
 " :w | %bd | e#"
@@ -168,3 +169,5 @@ hi Search cterm=NONE ctermfg=grey ctermbg=45
 " instalar tidy apt-get install tidy
 " tidy ignorar atributos ng-
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+" lopen 5
+let g:syntastic_loc_list_height=5
