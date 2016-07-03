@@ -2,41 +2,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-" Agregando plugins a Vundle
-call vundle#begin()
-
-Plugin 'qstrahl/vim-matchmaker' "realiza match sobre el curso(palabra)
-Plugin 'ctrlpvim/ctrlp.vim' " realizar busquda de archivo (diferente a find)
-
-
-Plugin 'tpope/vim-fugitive' " Nos permite acciones git en vim, Gpush,etc
-Plugin 'airblade/vim-gitgutter' " Muestra cambios sobre un archivo +,~,etc
-
-Plugin 'scrooloose/nerdtree'  " Para navegar sobre direcctorios
-Plugin 'tomtom/tcomment_vim' " para comentar codigo
-
-Plugin 'MarcWeber/vim-addon-mw-utils' " uso de sniptes para diferentes lenguajes
-Plugin 'tomtom/tlib_vim'           " uso de sniptes para diferentes lenguajes
-Plugin 'garbas/vim-snipmate'       " uso de sniptes para diferentes lenguajes
-Plugin 'honza/vim-snippets'        " opcional
-
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'morhetz/gruvbox' " colorschema
-Plugin 'scrooloose/syntastic' " Muestra errores de sintaxis
-
-Plugin 'altercation/vim-colors-solarized' " colorscheme gvim (funciona en xface terminal)
-":e $VIMRUNTIME/macros/matchit.vim
-":saveas ~/.vim/plugin/matchit.vim
-":e $VIMRUNTIME/macros/matchit.txt
-":saveas ~/.vim/doc/matchit.txt
-Plugin 'Valloric/MatchTagAlways' "colorea los los tags 
-
-call vundle#end()
-
-
+source /home/killer/Documentos/proyectos/vim_configuracion/.vimrc_plugins
 " Permite mover con el mouse las lineas de division (ejm:split)
 set nocompatible "Disable vi-compatibility    vim-powerline
 if has("mouse")
@@ -68,12 +34,10 @@ set incsearch               " Incrementally search while typing a /regex
 
 set t_Co=256                            " morhetz/gruvbox'
 "syntax enable
-set background=light                     "light, dark
+set background=light                    "light, dark
 highlight Comment gui=bold
 colorscheme gruvbox                     "solarized, gruvbox, distinguished
 
-":AirlineTheme bubblegum   (laederon, papercolor, distinguished)
-let g:airline_theme="papercolor"
 
 " badd agrega una nueva pestaña al buffer
 " Permite moverse con la tecla tab
@@ -86,45 +50,14 @@ nnoremap <C-Left> :bprevious<CR>
 "Control + c cerrar pestaña
 nnoremap <C-c> :bdelete<CR>
 "vim-airline
-"muestra las pestañas del buffer (Smarter tab line)
-let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#left_sep = ' '
 
 "tag bar
 "depedencia apt-get install exuberant-ctags
 
-"Requisitos para powerline (Helptags, help powerline)
-"http://powerline.readthedocs.org/en/master/installation/linux.html
-"vim-powerline/fontpatcher
-"$ ./fontpatcher PowerlineSymbols.sfd
-"$ cp PowerlineSymbols-Powerline.otf ~/.fonts/
-"# fc-cache -vf
-let g:airline_powerline_fonts = 1
-
-"let g:airline_powerline_fonts = 1
-"let g:airline_symbols
 set nocompatible
 set laststatus=2   " Always show the statusline
 "Acceso rapido
-map <F2> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
-
-" Configuracion de plugins
-"============qstrahl/vim-matchmaker============
-":Matchmaker! "Disable
-let g:matchmaker_enable_startup = 1 
-"============scrooloose/syntastic============
-let g:syntastic_python_checkers=['pylama'] " pip install pylama
-let g:syntastic_javascript_checkers = ['jslint'] "npm install -g jslint
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
 
 set autoread
 
@@ -150,7 +83,6 @@ hi default Matchmaker term=underline    ctermbg=43     guibg=#ffffff
 "highlight OverLength ctermbg=red ctermfg=white guibg=#592929 "marca con rojo
 "match OverLength /\%81v.\+/                                  "lo se pasa
 
-let NERDTreeIgnore=['\.pyc$', '\.pdf$', '\.log$', '\.lot$', '\.lof$', '\.out$','\.aux$','\.toc$']
 " switch higlight no matter the previous state
 nmap <F4> :set hls! <cr>
 " hit '/' highlights then enter search mode
@@ -166,8 +98,3 @@ highlight Normal ctermbg=White
 " :w | %bd | e#"
 " hi Search cterm=NONE ctermfg=black ctermbg=45
 hi Search cterm=NONE ctermfg=grey ctermbg=45
-" instalar tidy apt-get install tidy
-" tidy ignorar atributos ng-
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-" lopen 5
-let g:syntastic_loc_list_height=5
