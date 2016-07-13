@@ -2,13 +2,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-if has('unix')
-  if has('mac')       " osx
-	  source /Users/codebo04/configuraciones/vim_configuracion/.vimrc_plugins
-  else                " linux, bsd, etc
-	  source /home/killer/Documentos/proyectos/vim_configuracion/.vimrc_plugins
-  endif
-endif
+source ~/vim_configuracion/.vimrc_plugins
+
 " Permite mover con el mouse las lineas de division (ejm:split)
 set nocompatible "Disable vi-compatibility    vim-powerline
 if has("mouse")
