@@ -37,7 +37,7 @@ set t_Co=256                            " morhetz/gruvbox'
 "syntax enable
 set background=light                    "light, dark
 highlight Comment gui=bold
-colorscheme gruvbox                     "solarized, gruvbox, distinguished
+" colorscheme gruvbox                     "solarized, gruvbox, distinguished
 
 
 " badd agrega una nueva pestaña al buffer
