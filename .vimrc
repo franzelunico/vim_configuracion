@@ -3,7 +3,7 @@ set encoding=utf-8
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-source ~/vim_configuracion/.vimrc_plugins
+source ~/.vimrc_plugins
 
 " Permite mover con el mouse las lineas de division (ejm:split)
 set nocompatible "Disable vi-compatibility    vim-powerline
@@ -98,3 +98,6 @@ highlight Normal ctermbg=White
 " :w | %bd | e#"
 " hi Search cterm=NONE ctermfg=black ctermbg=45
 hi Search cterm=NONE ctermfg=grey ctermbg=45
+" List spaces end file 
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+nmap <F5> :set list! <cr>
