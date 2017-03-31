@@ -2,8 +2,11 @@
 set encoding=utf-8
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set ffs=unix,dos,mac " Use Unix as the standard file type
 
 source ~/.vimrc_plugins
+
+" CONFIGURACION GLOBAL
 
 " Permite mover con el mouse las lineas de division (ejm:split)
 set nocompatible "Disable vi-compatibility    vim-powerline
@@ -11,19 +14,71 @@ if has("mouse")
     set mouse=a
 endif
 
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
 
-" CONFIGURACION GLOBAL
+nmap <leader>w :w!<cr>        " Fast saving
+command W w !sudo tee % > /dev/null " :W sudo saves the file (useful for handling the permission-denied error)
+
+set wildmenu                  " Turn on the WiLd menu
+
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc
+if has("win16") || has("win32")
+    set wildignore+=.git\*,.hg\*,.svn\*
+else
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+endif
+
+""""""""""""""""""""""""""""""
+" => Visual mode related
+""""""""""""""""""""""""""""""
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Files, backups and undo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Moving around, tabs, windows and buffers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+map <space> /
+map <c-space> ?
+
+" Smart way to move between windows (control+w j)
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+"
+" When you press <leader>r you can search and replace the selected text
+vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+
+set foldcolumn=1              " Add a bit extra margin to the left
+set lazyredraw                " Don't redraw while executing macros (good performance config)
 filetype on                   " try to detect filetypes
 filetype plugin indent on     " enable loading indent file for filetype
 syntax on
+
 set number
 set autoindent
 set nowrap                  " don't wrap text Define una linea estatica (no responsivo)
 
-set expandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set expandtab               " Use spaces instead of tabs
+set shiftwidth=4            " 1 tab == 4 spaces
+set softtabstop=4           " 1 tab == 4 spaces
+set tabstop=4               " 1 tab == 4 spaces
 
 " Busquedas
 set ignorecase              " Default to using case insensitive searches,
@@ -101,3 +156,64 @@ hi Search cterm=NONE ctermfg=grey ctermbg=45
 " List spaces end file 
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 nmap <F5> :set list! <cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Helper functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! CmdLine(str)
+    exe "menu Foo.Bar :" . a:str
+    emenu Foo.Bar
+    unmenu Foo
+endfunction 
+
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", "\\/.*'$^~[]")
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'gv'
+        call CmdLine("Ag '" . l:pattern . "' " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+
+" Returns true if paste mode is enabled
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    endif
+    return ''
+endfunction
+
+" Don't close window, when deleting a buffer
+command! Bclose call <SID>BufcloseCloseIt()
+function! <SID>BufcloseCloseIt()
+   let l:currentBufNum = bufnr("%")
+   let l:alternateBufNum = bufnr("#")
+
+   if buflisted(l:alternateBufNum)
+     buffer #
+   else
+     bnext
+   endif
+
+   if bufnr("%") == l:currentBufNum
+     new
+   endif
+
+   if buflisted(l:currentBufNum)
+     execute("bdelete! ".l:currentBufNum)
+   endif
+endfunction
+
+" Make VIM remember position in file after reopen
+" if has("autocmd")
+"   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+"endif
