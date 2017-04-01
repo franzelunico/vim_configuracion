@@ -4,7 +4,6 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set ffs=unix,dos,mac " Use Unix as the standard file type
 
-source ~/.vimrc_plugins
 
 " CONFIGURACION GLOBAL
 
@@ -19,7 +18,13 @@ endif
 let mapleader = ","
 let g:mapleader = ","
 
+" When you press <leader>r you can search and replace the selected text
+vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 nmap <leader>w :w!<cr>        " Fast saving
+
+""" control c para habilibar el copiado de con el mouse ó estado normal
+map <c-c> :let &mouse = ( &mouse == ""? "a" : "" )<cr>
+
 command W w !sudo tee % > /dev/null " :W sudo saves the file (useful for handling the permission-denied error)
 
 set wildmenu                  " Turn on the WiLd menu
@@ -61,9 +66,6 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-"
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 set foldcolumn=1              " Add a bit extra margin to the left
 set lazyredraw                " Don't redraw while executing macros (good performance config)
@@ -217,3 +219,4 @@ endfunction
 " if has("autocmd")
 "   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 "endif
+source ~/.vimrc_plugins
