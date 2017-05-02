@@ -4,6 +4,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " Agregando plugins a Vundle
 call vundle#begin()
 
+Plugin 'terryma/vim-multiple-cursors' "realiza match sobre el curso(palabra)
 Plugin 'qstrahl/vim-matchmaker' "realiza match sobre el curso(palabra)
 Plugin 'ctrlpvim/ctrlp.vim' " realizar busquda de archivo (diferente a find)
 
@@ -48,6 +49,18 @@ let g:matchmaker_enable_startup = 1
 " ctermbg 4,7,10,11,16
 " hi default Matchmaker term=underline    ctermbg=43     guibg=#ffffff 
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Fugitive
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" :Git add %:Gwrite 
+" :Git checkout %:Gread 
+map <leader>gs :Gstatus<cr>
+map <leader>ga :Gwrite<cr>
+map <leader>gc :Gread<cr>
+map <leader>gd :Gdiff<cr>
+map <leader>gpull :Gpull<cr>
+map <leader>gpush :Gpush<cr>
 
 """"""""""""""""""""""""""""""""
 " => bufExplorer plugin

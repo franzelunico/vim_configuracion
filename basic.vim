@@ -20,6 +20,8 @@ let g:mapleader = ","
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 " Fast saving
 nmap <leader>w :w!<cr>
+" Fast quit save all files
+nmap <leader>q :wqall!<cr>
 
 """ control c para habilibar el copiado de con el mouse ó estado normal
 map <c-c> :let &mouse = ( &mouse == ""? "a" : "" )<cr>
@@ -125,6 +127,10 @@ nnoremap <C-c> :bdelete<CR>
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 nmap <F5> :set list! <cr>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Paste and no paste
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <F2> :set paste! <cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
