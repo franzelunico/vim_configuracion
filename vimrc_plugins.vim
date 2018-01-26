@@ -37,6 +37,10 @@ Plugin 'fisadev/fisa-vim-colorscheme'
 Plugin 'Distinguished'
 " Autoclose
 Plugin 'Townk/vim-autoclose'
+
+" Autocomplete python
+Plugin 'davidhalter/jedi-vim'
+
 call vundle#end()
 " Config Plugins
 
@@ -152,3 +156,6 @@ let g:syntastic_loc_list_height=5
 
 let g:gitgutter_enabled=0
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
+nmap <F6> :let g:syntastic_python_pylama_exe = 'python -m pylama'<cr>
+nmap <F7> :let g:syntastic_python_pylama_exe = 'python3 -m pylama'<cr>
+
