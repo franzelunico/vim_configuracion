@@ -1,24 +1,17 @@
 # vim_configuracion
-Esta es una configuracion basica de vim:
-
-F2 para desplegar nerdtree
 
 F8 para tagbar (requiere instalar exuberant-ctags)
 
-> cd ~
+```
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone https://github.com/franzelunico/vim_configuracion.git ~/Documentos/configuraciones_sistema/vim_configuracion
+touch .vimrc
+```
 
-> git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-> git clone https://github.com/franzelunico/vim_configuracion.git
-
-> rm .vimrc
-
-
-
-> ln -s vim_configuracion/.vimrc .vimrc
-
-> ln -s vim_configuracion/.vimrc_plugins .vimrc_plugins
-
-> vim +PluginInstall +qall
-
-> 
+Detro de .vimrc agregar
+```
+source ~/Documentos/configuraciones_sistema/vim_configuracion/basic.vim
+source ~/Documentos/configuraciones_sistema/vim_configuracion/vimrc_plugins.vim
+source ~/Documentos/configuraciones_sistema/vim_configuracion/customize.vim
+vim +PluginInstall +qall
+```
